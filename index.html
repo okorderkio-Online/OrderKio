@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4d623b" />
+    <meta name="description" content="Order fresh mutton and chicken in advance from trusted local stores." />
+    <title>Order Kio — Fresh, planned for you</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Order Kio home">
+        <span class="brand-mark">OK</span>
+        <span>Order Kio</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#store">Our store</a>
+        <a href="#partner">Partner with us</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="cart-trigger glass-button" type="button" data-open-cart aria-label="Open cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.55h7.8a2 2 0 0 0 1.94-1.5L21 7H7.15"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Cart</span><b data-cart-count>0</b>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="hero-copy glass-panel">
+          <p class="eyebrow"><span class="pulse-dot"></span> Fresh orders, thoughtfully planned</p>
+          <h1>Fresh meat,<br><em>on your time.</em></h1>
+          <p class="hero-text">Order today for tomorrow or later. Your butcher prepares your selection fresh for the delivery day — no rush, no compromise.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#store">Start an order <span>↘</span></a>
+            <a class="text-link" href="#how-it-works">How it works <span>↓</span></a>
+          </div>
+          <div class="hero-note"><span>✦</span> Advance booking only — minimum 1 day notice</div>
+        </div>
+        <div class="hero-visual">
+          <div class="logo-orb"><img src="assets/ok-brand.jpg" alt="Order Kio logo" /></div>
+          <div class="delivery-badge glass-panel"><span class="badge-icon">✓</span><span><b>Scheduled fresh</b><small>Prepared for your chosen day</small></span></div>
+          <div class="hero-chip chip-one">A R Mutton &amp; Chicken</div>
+          <div class="hero-chip chip-two">Chennai · 600062</div>
+        </div>
+      </section>
+
+      <section class="trust-strip wrap" aria-label="Order Kio benefits">
+        <div><span>01</span><p><b>Choose precisely</b><small>Kg, grams, pieces or sets</small></p></div>
+        <div><span>02</span><p><b>Book ahead</b><small>Choose your delivery day &amp; time</small></p></div>
+        <div><span>03</span><p><b>Freshly prepared</b><small>Cut and packed on the day</small></p></div>
+      </section>
+
+      <section class="section wrap" id="store">
+        <div class="section-heading">
+          <div><p class="eyebrow">Now serving</p><h2>Your neighbourhood<br><em>butcher, online.</em></h2></div>
+          <p>Meet our first trusted partner. Select exactly what you need, then choose a future delivery slot at checkout.</p>
+        </div>
+        <article class="store-card glass-panel">
+          <div class="store-image"><img src="assets/ok-brand.jpg" alt="Order Kio mark" /></div>
+          <div class="store-info">
+            <div class="store-title"><div><p class="store-type">Mutton &amp; chicken shop</p><h3>A R Mutton &amp; Chicken Stall</h3></div><span class="open-pill"><i></i> Open today</span></div>
+            <p class="address">92, Kulakarai St, Subramanya Bharathi Nagar,<br>Thirumullaivoyal, Chennai, Avadi — 600062</p>
+            <div class="store-meta"><span>★ 5.0 <small>(4 reviews)</small></span><span>·</span><span>Closes 9:00 PM</span></div>
+            <div class="store-actions"><a class="subtle-button" target="_blank" rel="noreferrer" href="https://maps.app.goo.gl/iCahAdjLs6M4PvAm7">View verified location ↗</a><a class="phone-link" href="tel:09080901315">Call 090809 01315</a></div>
+          </div>
+        </article>
+
+        <div class="catalog-head"><div><p class="eyebrow">Today's catalogue</p><h3>Pick your fresh cuts</h3></div><div class="legend"><span class="legend-dot"></span> Sunday special availability shown</div></div>
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="delivery-section" id="how-it-works">
+        <div class="wrap delivery-layout">
+          <div class="delivery-copy">
+            <p class="eyebrow">The Order Kio way</p>
+            <h2>Because freshness<br>can be <em>planned.</em></h2>
+            <p>We collect your order in advance, so your neighbourhood butcher can prepare the right quantity on the right day. It is a more thoughtful way to buy meat.</p>
+          </div>
+          <ol class="steps">
+            <li><span>1</span><div><b>Add your cuts</b><p>Choose portions in kg, grams, pieces or sets.</p></div></li>
+            <li><span>2</span><div><b>Choose a future slot</b><p>Select a delivery date at least one day ahead.</p></div></li>
+            <li><span>3</span><div><b>Pay safely by UPI</b><p>Use your UPI app — we never collect card details.</p></div></li>
+            <li><span>4</span><div><b>Receive it fresh</b><p>Your partner prepares and packs it for the day.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section wrap delivery-estimator">
+        <div class="estimator-card glass-panel">
+          <div><p class="eyebrow">Delivery estimate</p><h2>Know your delivery<br><em>estimate upfront.</em></h2><p>Enter your approximate distance from the stall to see the estimated delivery charge before you schedule your order.</p></div>
+          <div class="estimator-form">
+            <label for="quick-distance">Distance from the stall</label>
+            <div class="distance-input"><input id="quick-distance" type="number" min="0.5" step="0.5" value="3" inputmode="decimal" /><span>km</span></div>
+            <p class="delivery-result">Estimated delivery <b id="quick-delivery">₹72</b></p>
+            <small>Estimate uses ₹48 base fare (first 1 km), ₹10/km after, plus 5% GST. Actual route distance is confirmed at checkout.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="partner-section" id="partner">
+        <div class="wrap partner-card">
+          <div><p class="eyebrow">Grow with Order Kio</p><h2>Own a fresh-food store?<br><em>Let's grow together.</em></h2></div>
+          <div><p>Bring your regular customers a simple scheduled-order experience. We help with discovery, order collection and delivery coordination.</p><div class="partner-actions"><a class="light-button" target="_blank" rel="noreferrer" href="https://wa.me/919444417286?text=Hi%20Order%20Kio%2C%20I%20want%20to%20know%20about%20the%20Client%20%2F%20Store%20Partner%20Programme.">WhatsApp Client Programme <span>↗</span></a></div></div>
+        </div>
+      </section>
+
+      <section class="section wrap about-section" id="about">
+        <div class="about-logo"><span>OK</span></div>
+        <div><p class="eyebrow">About Order Kio</p><h2>Local stores.<br><em>Better ordering.</em></h2><p>Order Kio helps local food specialists serve their communities online without taking away what makes them trusted: quality, care and a familiar face. We are starting with fresh mutton and chicken in Thirumullaivoyal, Chennai.</p><div class="contact-actions"><a class="text-link" href="tel:09080901315">Need help with an order? Call the store <span>↗</span></a><a class="text-link" target="_blank" rel="noreferrer" href="https://wa.me/919444417286?text=Hi%20Order%20Kio%2C%20I%20need%20help%20with%20my%20order.">WhatsApp Order Kio: +91 94444 17286 <span>↗</span></a></div></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner"><a class="brand" href="#top"><span class="brand-mark">OK</span><span>Order Kio</span></a><p>Freshly planned. Locally prepared.</p><a href="#top">Back to top ↑</a></div>
+    </footer>
+
+    <a class="whatsapp-float" target="_blank" rel="noreferrer" href="https://wa.me/919444417286?text=Hi%20Order%20Kio%2C%20I%20have%20an%20enquiry." aria-label="Chat with Order Kio on WhatsApp"><span>◔</span> WhatsApp us</a>
+
+    <aside class="cart-drawer" data-cart-drawer aria-label="Shopping cart" aria-hidden="true">
+      <div class="drawer-head"><div><p class="eyebrow">Your selection</p><h2>Cart</h2></div><button type="button" class="icon-button" data-close-cart aria-label="Close cart">×</button></div>
+      <div class="cart-lines" data-cart-lines></div>
+      <div class="cart-bottom"><div class="cart-summary"><span>Items total</span><b data-cart-subtotal>₹0</b></div><p>Delivery is calculated from your address at checkout.</p><button class="primary-button checkout-button" type="button" data-open-checkout>Schedule delivery <span>→</span></button></div>
+    </aside>
+    <div class="modal-backdrop" data-backdrop></div>
+
+    <dialog class="checkout-modal" data-checkout-modal>
+      <button class="icon-button modal-close" type="button" data-close-checkout aria-label="Close checkout">×</button>
+      <section data-checkout-step="details">
+        <p class="eyebrow">Step 1 of 2 · Delivery details</p><h2>When should we<br><em>prepare your order?</em></h2>
+        <p class="modal-intro">Complete your details and we’ll send this scheduled order directly to the store’s order sheet.</p>
+        <form id="checkout-form">
+          <div class="field-grid"><label>Full name<input required name="customerName" autocomplete="name" placeholder="Your name" /></label><label>Mobile number<input required name="phone" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" placeholder="10-digit mobile number" /></label></div>
+          <label>Delivery address<input required name="address" autocomplete="street-address" placeholder="House no., street, area" /></label>
+          <div class="field-grid"><label>Pincode<input required name="pincode" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{6}" placeholder="600062" /></label><label>Approx. route distance <span class="optional">(km)</span><div class="location-row"><input required name="distance" type="number" min="0.5" max="50" step="0.1" inputmode="decimal" value="3" /><button type="button" class="locate-button" data-use-location title="Use current location">◎</button></div></label></div>
+          <div class="field-grid"><label>Delivery date<input required name="deliveryDate" type="date" /></label><label>Preferred time<input required name="deliveryTime" type="time" min="07:00" max="20:00" value="09:00" /></label></div>
+          <label>Special cutting instructions <span class="optional">(optional)</span><textarea name="notes" rows="2" placeholder="For example: curry cut, medium pieces"></textarea></label>
+          <div class="checkout-total"><span><b data-checkout-items>₹0</b> items + <b data-checkout-delivery>₹0</b> delivery</span><strong data-checkout-total>₹0</strong></div>
+          <p class="form-disclaimer">By continuing, your order details are securely recorded in the A R Mutton &amp; Chicken order sheet. No payment card details are collected.</p>
+          <button class="primary-button checkout-button" type="submit">Continue to UPI payment <span>→</span></button>
+        </form>
+      </section>
+      <section hidden data-checkout-step="payment">
+        <p class="eyebrow">Step 2 of 2 · UPI payment</p><h2>Almost there.<br><em>Pay securely by UPI.</em></h2>
+        <div class="payment-layout"><div class="qr-box"><img src="assets/upi-qr.png" alt="UPI payment QR code for Order Kio" /><small>Scan with any UPI app</small></div><div><p>Pay <b data-payment-total>₹0</b> to</p><h3>Order Kio</h3><code>6369037332@upi</code><a class="primary-button upi-link" data-upi-link href="#">Open UPI app <span>↗</span></a></div></div>
+        <div class="payment-status"><span class="spinner"></span><div><b>Waiting for payment confirmation</b><p>After paying, return here and tap the confirmation button.</p></div></div>
+        <button class="subtle-button confirmation-button" type="button" data-confirm-payment>I have completed the UPI payment</button>
+        <p class="payment-note">For a live launch, connect a payment gateway webhook (such as Razorpay or Cashfree) to verify payments automatically. This secure starter does not claim a payment is successful before the bank confirms it.</p>
+      </section>
+      <section hidden class="success-state" data-checkout-step="success"><span class="success-mark">✓</span><p class="eyebrow">Order request received</p><h2>Thank you,<br><em>we’re on it.</em></h2><p>Your advance order has been sent to A R Mutton &amp; Chicken Stall. The store will confirm preparation and delivery after verifying your UPI payment.</p><div class="receipt" data-order-receipt></div><button class="primary-button" type="button" data-close-checkout>Done <span>→</span></button></section>
+    </dialog>
+
+    <dialog class="partner-modal" data-partner-modal>
+      <button class="icon-button modal-close" type="button" data-close-partner aria-label="Close form">×</button><p class="eyebrow">Store partner programme</p><h2>Bring your store<br><em>to Order Kio.</em></h2><p>Tell us a little about your business and we’ll get in touch.</p><form data-partner-form><label>Store name<input required name="store" placeholder="Your store name" /></label><div class="field-grid"><label>Your name<input required name="name" placeholder="Your name" /></label><label>Mobile number<input required name="phone" inputmode="tel" placeholder="Mobile number" /></label></div><label>Location / area<input required name="area" placeholder="Area, city" /></label><button class="primary-button" type="submit">Send interest <span>→</span></button></form><p class="partner-success" hidden>Thank you. Your interest has been noted — we’ll reach out soon.</p></dialog>
+
+    <button class="toast" type="button" aria-live="polite" aria-label="Open cart" data-toast disabled></button>
+    <script src="app.js"></script>
+  </body>
+</html>
