@@ -1,13 +1,13 @@
 const products = [
-  { id: 'mutton', name: 'Mutton', price: 1200, unit: 'per kg', measure: 'Custom weight', weightBased: true },
-  { id: 'head', name: 'Mutton Head', price: 540, unit: 'per piece', measure: 'Quantity' },
-  { id: 'leg', name: 'Mutton Leg', price: 240, unit: 'per set of 4', measure: 'Set quantity' },
-  { id: 'lung', name: 'Mutton Lung', price: 120, unit: 'per piece', measure: 'Quantity' },
-  { id: 'liver', name: 'Mutton Liver', price: 1200, unit: 'per kg', measure: 'Custom weight', weightBased: true },
-  { id: 'spleen', name: 'Mutton Spleen / Maneeral', price: 360, unit: 'per piece', measure: '1 piece', sunday: true },
-  { id: 'stomach', name: 'Mutton Stomach', price: null, unit: 'price on request', measure: 'Quantity' },
-  { id: 'boneless', name: 'Mutton Bone & Boneless', price: 1440, unit: 'per kg', measure: 'Custom weight', weightBased: true },
-  { id: 'chicken', name: 'Chicken', price: 399, unit: 'per kg', measure: 'Custom weight', weightBased: true }
+  { id: 'mutton', name: 'Mutton', price: 1000, unit: 'per kg', measure: 'Custom weight', weightBased: true },
+  { id: 'head', name: 'Mutton Head', price: 300, unit: 'per piece', measure: 'Quantity' },
+  { id: 'leg', name: 'Mutton Leg', price: 350, unit: 'per set of 4', measure: 'Set quantity' },
+  { id: 'lung', name: 'Mutton Lung', price: 100, unit: 'per piece', measure: 'Quantity' },
+  { id: 'liver', name: 'Mutton Liver', price: 1000, unit: 'per kg', measure: 'Custom weight', weightBased: true },
+  { id: 'spleen', name: 'Mutton Spleen / Maneeral', price: 310, unit: 'per piece', measure: '1 piece' },
+  { id: 'stomach', name: 'Mutton Stomach', price: 250, unit: 'per piece', measure: 'Quantity' },
+  { id: 'boneless', name: 'Mutton Bone & Boneless', price: 1240, unit: 'per kg', measure: 'Custom weight', weightBased: true },
+  { id: 'chicken', name: 'Chicken', price: 315, unit: 'per kg', measure: 'Custom weight', weightBased: true }
 ];
 
 const cart = [];
@@ -22,17 +22,16 @@ const getCartCount = () => cart.reduce((total, item) => total + item.quantity, 0
 const isSunday = dateValue => dateValue && new Date(`${dateValue}T12:00:00`).getDay() === 0;
 const calculateDelivery = distance => {
   const km = Math.max(Number(distance) || 1, 1);
-  const porterEstimate = (48 + Math.max(0, km - 1) * 10) * 1.05;
+  const porterEstimate = (48 + Math.max(0, km - 1) * 10) * 1.2075;
   return Math.ceil(porterEstimate);
 };
 
 function renderProducts() {
   document.querySelector('#product-grid').innerHTML = products.map(product => `
-    <article class="product-card ${product.sunday ? 'sunday' : ''} ${product.weightBased ? 'weight-product' : ''}">
+    <article class="product-card ${product.weightBased ? 'weight-product' : ''}">
       <h4>${product.name}</h4>
       <p class="product-unit">${product.measure}</p>
       ${product.weightBased ? `<label class="weight-picker"><span>Choose kg / grams</span><div class="weight-customizer"><input type="number" min="0.1" max="5" step="0.1" value="1" inputmode="decimal" data-weight-input="${product.id}" aria-label="Choose ${product.name} weight" /><select data-weight-unit="${product.id}" aria-label="Weight unit for ${product.name}"><option value="kg">kg</option><option value="g">grams</option></select></div></label>` : ''}
-      ${product.sunday ? '<span class="sunday-label">Sunday only</span>' : ''}
       <div class="product-foot">
         <div class="product-price"><strong>${product.price ? money(product.price) : 'On request'}</strong><span>${product.unit}</span></div>
         <button class="add-product" type="button" data-add="${product.id}" ${product.price ? '' : 'disabled title="Price to be confirmed by store"'} aria-label="Add ${product.name} to cart">+</button>
@@ -58,10 +57,6 @@ function updateCart() {
 
 function addProduct(id) {
   const product = products.find(item => item.id === id);
-  if (product.sunday && !isSunday(getSelectedDate())) {
-    showToast('Mutton Spleen / Maneeral can be ordered for Sunday delivery only.');
-    return;
-  }
   const weightInput = document.querySelector(`[data-weight-input="${id}"]`);
   const weightUnit = document.querySelector(`[data-weight-unit="${id}"]`);
   const grams = product.weightBased ? Math.round(Number(weightInput.value) * (weightUnit.value === 'kg' ? 1000 : 1)) : null;
@@ -102,12 +97,20 @@ function openCart() { document.querySelector('[data-cart-drawer]').classList.add
 function closeCart() { document.querySelector('[data-cart-drawer]').classList.remove('open'); document.querySelector('[data-cart-drawer]').setAttribute('aria-hidden', 'true'); document.querySelector('[data-backdrop]').classList.remove('show'); }
 function showToast(message, opensCart = false) { const toast = document.querySelector('[data-toast]'); toast.textContent = message; toast.disabled = !opensCart; toast.dataset.action = opensCart ? 'cart' : ''; toast.classList.add('show'); clearTimeout(showToast.timer); showToast.timer = setTimeout(() => toast.classList.remove('show'), 2800); }
 
+function getNextSunday(base) {
+  const date = new Date(base);
+  date.setHours(12, 0, 0, 0);
+  date.setDate(date.getDate() + ((7 - date.getDay()) % 7));
+  return date;
+}
+
 function setMinDate() {
   const delivery = document.querySelector('[name="deliveryDate"]');
-  const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
-  const value = tomorrow.toISOString().slice(0, 10);
+  const tomorrow = new Date(); tomorrow.setHours(12, 0, 0, 0); tomorrow.setDate(tomorrow.getDate() + 1);
+  const value = getNextSunday(tomorrow).toISOString().slice(0, 10);
   delivery.min = value;
   delivery.value = value;
+  delivery.step = '7';
 }
 
 function syncCheckoutTotal() {
@@ -128,6 +131,20 @@ function openCheckout() {
   closeCart(); syncCheckoutTotal(); showCheckoutStep('details'); document.querySelector('[data-checkout-modal]').showModal();
 }
 function closeCheckout() { document.querySelector('[data-checkout-modal]').close(); }
+
+function copyUpiId(button) {
+  const upiId = document.querySelector('[data-upi-id]').textContent.trim();
+  const done = () => {
+    const label = button.querySelector('span');
+    const original = label.textContent;
+    label.textContent = 'Copied';
+    button.classList.add('copied');
+    showToast('UPI ID copied — paste it in your UPI app.');
+    setTimeout(() => { label.textContent = original; button.classList.remove('copied'); }, 1800);
+  };
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(upiId).then(done).catch(done);
+  else done();
+}
 
 function toRadians(value) { return value * Math.PI / 180; }
 function distanceFromStore(lat, lng) {
@@ -175,6 +192,8 @@ document.addEventListener('click', event => {
   if (event.target.closest('[data-close-checkout]')) closeCheckout();
   if (event.target.matches('[data-backdrop]')) closeCart();
   if (event.target.closest('[data-use-location]')) locateCustomer();
+  const copyUpi = event.target.closest('[data-copy-upi]');
+  if (copyUpi) copyUpiId(copyUpi);
   if (event.target.closest('[data-open-partner]')) document.querySelector('[data-partner-modal]').showModal();
   if (event.target.closest('[data-close-partner]')) document.querySelector('[data-partner-modal]').close();
   if (event.target.closest('[data-confirm-payment]')) {
@@ -189,13 +208,19 @@ document.addEventListener('change', event => { if (event.target.matches('[data-w
 
 document.querySelector('#quick-distance').addEventListener('input', event => { document.querySelector('#quick-delivery').textContent = money(calculateDelivery(event.target.value)); });
 document.querySelector('[name="distance"]').addEventListener('input', syncCheckoutTotal);
-document.querySelector('[name="deliveryDate"]').addEventListener('change', () => { if (!isSunday(getSelectedDate()) && cart.some(item => item.product.id === 'spleen')) { const index = cart.findIndex(item => item.product.id === 'spleen'); cart.splice(index, 1); updateCart(); showToast('Sunday special removed: choose a Sunday to order it.'); } syncCheckoutTotal(); });
+document.querySelector('[name="deliveryDate"]').addEventListener('change', event => {
+  if (!isSunday(event.target.value)) {
+    event.target.value = getNextSunday(new Date(`${event.target.value}T12:00:00`)).toISOString().slice(0, 10);
+    showToast('Delivery is available on Sundays only — date updated to the next Sunday.');
+  }
+  syncCheckoutTotal();
+});
 
 document.querySelector('#checkout-form').addEventListener('submit', async event => {
   event.preventDefault();
   const details = Object.fromEntries(new FormData(event.target).entries());
   if (!cart.length) return;
-  if (!isSunday(details.deliveryDate) && cart.some(item => item.product.id === 'spleen')) { showToast('Mutton Spleen / Maneeral requires a Sunday delivery date.'); return; }
+  if (!isSunday(details.deliveryDate)) { showToast('Please choose a Sunday delivery date.'); return; }
   const delivery = calculateDelivery(details.distance); const total = getCartSubtotal() + delivery;
   const submitButton = event.submitter; submitButton.disabled = true; submitButton.textContent = 'Saving your order…';
   const synced = await submitOrder(details, delivery, total);

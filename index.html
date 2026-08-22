@@ -73,7 +73,7 @@
           </div>
         </article>
 
-        <div class="catalog-head"><div><p class="eyebrow">Today's catalogue</p><h3>Pick your fresh cuts</h3></div><div class="legend"><span class="legend-dot"></span> Sunday special availability shown</div></div>
+        <div class="catalog-head"><div><p class="eyebrow">Today's catalogue</p><h3>Pick your fresh cuts</h3></div><div class="legend"><span class="legend-dot"></span> Deliveries are scheduled for Sundays</div></div>
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
       </section>
 
@@ -140,7 +140,7 @@
           <div class="field-grid"><label>Full name<input required name="customerName" autocomplete="name" placeholder="Your name" /></label><label>Mobile number<input required name="phone" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" placeholder="10-digit mobile number" /></label></div>
           <label>Delivery address<input required name="address" autocomplete="street-address" placeholder="House no., street, area" /></label>
           <div class="field-grid"><label>Pincode<input required name="pincode" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{6}" placeholder="600062" /></label><label>Approx. route distance <span class="optional">(km)</span><div class="location-row"><input required name="distance" type="number" min="0.5" max="50" step="0.1" inputmode="decimal" value="3" /><button type="button" class="locate-button" data-use-location title="Use current location">◎</button></div></label></div>
-          <div class="field-grid"><label>Delivery date<input required name="deliveryDate" type="date" /></label><label>Preferred time<input required name="deliveryTime" type="time" min="07:00" max="20:00" value="09:00" /></label></div>
+          <div class="field-grid"><label>Delivery date <span class="optional">(Sundays only)</span><input required name="deliveryDate" type="date" /></label><label>Preferred time<input required name="deliveryTime" type="time" min="07:00" max="20:00" value="09:00" /></label></div>
           <label>Special cutting instructions <span class="optional">(optional)</span><textarea name="notes" rows="2" placeholder="For example: curry cut, medium pieces"></textarea></label>
           <div class="checkout-total"><span><b data-checkout-items>₹0</b> items + <b data-checkout-delivery>₹0</b> delivery</span><strong data-checkout-total>₹0</strong></div>
           <p class="form-disclaimer">By continuing, your order details are securely recorded in the A R Mutton &amp; Chicken order sheet. No payment card details are collected.</p>
@@ -149,9 +149,25 @@
       </section>
       <section hidden data-checkout-step="payment">
         <p class="eyebrow">Step 2 of 2 · UPI payment</p><h2>Almost there.<br><em>Pay securely by UPI.</em></h2>
-        <div class="payment-layout"><div class="qr-box"><img src="assets/upi-qr.png" alt="UPI payment QR code for Order Kio" /><small>Scan with any UPI app</small></div><div><p>Pay <b data-payment-total>₹0</b> to</p><h3>Order Kio</h3><code>6369037332@upi</code><a class="primary-button upi-link" data-upi-link href="#">Open UPI app <span>↗</span></a></div></div>
+        <div class="payment-layout">
+          <div class="qr-box"><img src="assets/upi-qr.png" alt="UPI payment QR code for Order Kio" /><small>Scan with any UPI app</small></div>
+          <div>
+            <p>Pay <b data-payment-total>₹0</b> to</p>
+            <h3>Order Kio</h3>
+            <div class="upi-id-row">
+              <code data-upi-id>6369037332@upi</code>
+              <button type="button" class="copy-button" data-copy-upi title="Copy UPI ID"><span>Copy</span></button>
+            </div>
+            <a class="primary-button upi-link" data-upi-link href="#">Open UPI app <span>↗</span></a>
+          </div>
+        </div>
+        <ol class="payment-steps">
+          <li>Scan the QR code, or open your UPI app and pay to the UPI ID above.</li>
+          <li>Complete the payment for the amount shown.</li>
+          <li>Come back to this page and click <b>“I have paid”</b> below.</li>
+        </ol>
         <div class="payment-status"><span class="spinner"></span><div><b>Waiting for payment confirmation</b><p>After paying, return here and tap the confirmation button.</p></div></div>
-        <button class="subtle-button confirmation-button" type="button" data-confirm-payment>I have completed the UPI payment</button>
+        <button class="subtle-button confirmation-button" type="button" data-confirm-payment>I have paid</button>
         <p class="payment-note">For a live launch, connect a payment gateway webhook (such as Razorpay or Cashfree) to verify payments automatically. This secure starter does not claim a payment is successful before the bank confirms it.</p>
       </section>
       <section hidden class="success-state" data-checkout-step="success"><span class="success-mark">✓</span><p class="eyebrow">Order request received</p><h2>Thank you,<br><em>we’re on it.</em></h2><p>Your advance order has been sent to A R Mutton &amp; Chicken Stall. The store will confirm preparation and delivery after verifying your UPI payment.</p><div class="receipt" data-order-receipt></div><button class="primary-button" type="button" data-close-checkout>Done <span>→</span></button></section>
