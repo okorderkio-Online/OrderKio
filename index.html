@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2" />
   </head>
   <body>
     <div class="ambient ambient-one"></div>
@@ -73,7 +73,7 @@
           </div>
         </article>
 
-        <div class="catalog-head"><div><p class="eyebrow">Today's catalogue</p><h3>Pick your fresh cuts</h3></div><div class="legend"><span class="legend-dot"></span> Deliveries are scheduled for Sundays</div></div>
+        <div class="catalog-head"><div><p class="eyebrow">Today's catalogue</p><h3>Pick your fresh cuts</h3></div><div class="legend"><span class="legend-dot"></span> Sunday special availability shown</div></div>
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
       </section>
 
@@ -140,7 +140,7 @@
           <div class="field-grid"><label>Full name<input required name="customerName" autocomplete="name" placeholder="Your name" /></label><label>Mobile number<input required name="phone" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" placeholder="10-digit mobile number" /></label></div>
           <label>Delivery address<input required name="address" autocomplete="street-address" placeholder="House no., street, area" /></label>
           <div class="field-grid"><label>Pincode<input required name="pincode" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{6}" placeholder="600062" /></label><label>Approx. route distance <span class="optional">(km)</span><div class="location-row"><input required name="distance" type="number" min="0.5" max="50" step="0.1" inputmode="decimal" value="3" /><button type="button" class="locate-button" data-use-location title="Use current location">◎</button></div></label></div>
-          <div class="field-grid"><label>Delivery date <span class="optional">(Sundays only)</span><input required name="deliveryDate" type="date" /></label><label>Preferred time<input required name="deliveryTime" type="time" min="07:00" max="20:00" value="09:00" /></label></div>
+          <div class="field-grid"><label>Delivery date<input required name="deliveryDate" type="date" /></label><label>Preferred time<input required name="deliveryTime" type="time" min="07:00" max="20:00" value="09:00" /></label></div>
           <label>Special cutting instructions <span class="optional">(optional)</span><textarea name="notes" rows="2" placeholder="For example: curry cut, medium pieces"></textarea></label>
           <div class="checkout-total"><span><b data-checkout-items>₹0</b> items + <b data-checkout-delivery>₹0</b> delivery</span><strong data-checkout-total>₹0</strong></div>
           <p class="form-disclaimer">By continuing, your order details are securely recorded in the A R Mutton &amp; Chicken order sheet. No payment card details are collected.</p>
@@ -177,6 +177,6 @@
       <button class="icon-button modal-close" type="button" data-close-partner aria-label="Close form">×</button><p class="eyebrow">Store partner programme</p><h2>Bring your store<br><em>to Order Kio.</em></h2><p>Tell us a little about your business and we’ll get in touch.</p><form data-partner-form><label>Store name<input required name="store" placeholder="Your store name" /></label><div class="field-grid"><label>Your name<input required name="name" placeholder="Your name" /></label><label>Mobile number<input required name="phone" inputmode="tel" placeholder="Mobile number" /></label></div><label>Location / area<input required name="area" placeholder="Area, city" /></label><button class="primary-button" type="submit">Send interest <span>→</span></button></form><p class="partner-success" hidden>Thank you. Your interest has been noted — we’ll reach out soon.</p></dialog>
 
     <button class="toast" type="button" aria-live="polite" aria-label="Open cart" data-toast disabled></button>
-    <script src="app.js"></script>
+    <script src="app.js?v=2"></script>
   </body>
 </html>
